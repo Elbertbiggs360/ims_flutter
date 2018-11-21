@@ -1,6 +1,6 @@
-import 'package:test/test.dart';
 import 'package:ims_flutter/counter.dart';
 import 'package:ims_flutter/main.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Widgets', () {
@@ -12,10 +12,11 @@ void main() {
       expect(counter.value, 1);
     });
 
-    test('test presence of list text', () {
+    testWidgets('test presence of text', (WidgetTester tester) async {
       final app = MyApp();
+      await tester.pumpWidget(app);
 
-      expect(true, true);
+      expect(find.text('Here we are'), findsOneWidget);
     });
   });
 }
